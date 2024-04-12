@@ -12,7 +12,7 @@ cd m4-1.4.19
 ./configure --prefix=/usr \
 	--host=$LFS_TGT \
 	--build=$(build-aux/config.guess)
-make && sudo make DESTDIR=$LFS install
+make && make DESTDIR=$LFS install
 cd /mnt/lfs/tools/
 
 # Making Ncurses
@@ -39,7 +39,7 @@ popd
 	--disable-stripping \
 	--enable-widec
 make
-sudo make DESTDIR=$LFS TIC_PATH=$(pwd)/build/progs/tic install
+make DESTDIR=$LFS TIC_PATH=$(pwd)/build/progs/tic install
 ln -sv libncursesw.so $LFS/usr/lib/libncurses.so
 sed -e 's/^#if.*XOPEN.*$/#if 1/' \
 	-i $LFS/usr/include/curses.h
@@ -54,7 +54,7 @@ cd bash-5.2.21
 	--host=$LFS_TGT \
 	--without-bash-malloc
 
-make && sudo make DESTDIR=$LFS install
+make && make DESTDIR=$LFS install
 ln -sv bash $LFS/bin/sh
 cd /mnt/lfs/tools/
 
@@ -67,7 +67,7 @@ cd coreutils-9.4
 	--build=$(build-aux/config.guess) \
 	--enable-install-program=hostname \
 	--enable-no-install-program=kill,uptime
-make && sudo make DESTDIR=$LFS install
+make && make DESTDIR=$LFS install
 mv -v $LFS/usr/bin/chroot $LFS/usr/sbin
 mkdir -pv $LFS/usr/share/man/man8
 mv -v $LFS/usr/share/man/man1/chroot.1 $LFS/usr/share/man/man8/chroot.8
@@ -82,7 +82,7 @@ cd diffutils-3.10
 	--host=$LFS_TGT \
 	--build=$(./build-aux/config.guess)
 
-make && sudo make DESTDIR=$LFS install
+make && make DESTDIR=$LFS install
 cd /mnt/lfs/tools/
 
 # Making File
@@ -100,7 +100,7 @@ make
 popd
 ./configure --prefix=/usr --host=$LFS_TGT --build=$(./config.guess)
 make FILE_COMPILE=$(pwd)/build/src/file
-sudo make DESTDIR=$LFS install
+make DESTDIR=$LFS install
 rm -v $LFS/usr/lib/libmagic.la
 cd /mnt/lfs/tools/
 
@@ -112,7 +112,7 @@ tar -xvf ../sources/findutils-4.9.0.tar.xz
 	--host=$LFS_TGT \
 	--build=$(build-aux/config.guess)
 
-make && sudo make DESTDIR=$LFS install
+make && make DESTDIR=$LFS install
 cd /mnt/lfs/tools/
 
 # Making Gawk
@@ -124,7 +124,7 @@ sed -i 's/extras//' Makefile.in
 	--host=$LFS_TGT \
 	--build=$(build-aux/config.guess)
 
-make && sudo make DESTDIR=$LFS install
+make && make DESTDIR=$LFS install
 cd /mnt/lfs/tools/
 
 # Making Grep
@@ -135,7 +135,7 @@ cd grep-3.11
 	--host=$LFS_TGT \
 	--build=$(./build-aux/config.guess)
 
-make && sudo make DESTDIR=$LFS install
+make && make DESTDIR=$LFS install
 cd /mnt/lfs/tools/
 
 # Making Gzip
@@ -144,7 +144,7 @@ tar -xvf ../sources/gzip-1.13.tar.xz
 cd gzip-1.13
 ./configure --prefix=/usr --host=$LFS_TGT
 
-make && sudo make DESTDIR=$LFS install
+make && make DESTDIR=$LFS install
 cd /mnt/lfs/tools/
 
 # Making Make
@@ -156,7 +156,7 @@ cd make-4.4.1
 	--host=$LFS_TGT \
 	--build=$(build-aux/config.guess)
 
-make && sudo make DESTDIR=$LFS install
+make && make DESTDIR=$LFS install
 cd /mnt/lfs/tools/
 
 # Making Patch
@@ -167,7 +167,7 @@ cd patch-2.7.6
 	--host=$LFS_TGT \
 	--build=$(build-aux/config.guess)
 
-make && sudo make DESTDIR=$LFS install
+make && make DESTDIR=$LFS install
 cd /mnt/lfs/tools/
 
 # Making Sed
@@ -178,7 +178,7 @@ cd sed-4.9
 	--host=$LFS_TGT \
 	--build=$(./build-aux/config.guess)
 
-make && sudo make DESTDIR=$LFS install
+make && make DESTDIR=$LFS install
 cd /mnt/lfs/tools/
 
 # Making Tar
@@ -189,7 +189,7 @@ cd tar-1.35
 	--host=$LFS_TGT \
 	--build=$(build-aux/config.guess)
 
-make && sudo make DESTDIR=$LFS install
+make && make DESTDIR=$LFS install
 cd /mnt/lfs/tools/
 
 # Makig XZ
@@ -202,7 +202,7 @@ cd xz-5.4.6
 	--disable-static \
 	--docdir=/usr/share/doc/xz-5.4.6
 
-make && sudo make DESTDIR=$LFS install
+make && make DESTDIR=$LFS install
 cd /mnt/lfs/tools/
 
 rm -v $LFS/usr/lib/liblzma.la
@@ -224,7 +224,7 @@ cd build
 	--enable-64-bit-bfd \
 	--enable-default-hash-style=gnu
 
-make && sudo make DESTDIR=$LFS install
+make && make DESTDIR=$LFS install
 cd /mnt/lfs/tools/
 rm -v $LFS/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes,sframe}.{a,la}
 
@@ -261,6 +261,6 @@ cd build
 	--disable-libvtv \
 	--enable-languages=c,c++
 
-make && sudo make DESTDIR=$LFS install
+make && make DESTDIR=$LFS install
 cd /mnt/lfs/tools/
 ln -sv gcc $LFS/usr/bin/cc
