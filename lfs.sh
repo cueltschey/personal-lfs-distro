@@ -37,6 +37,8 @@ case $(uname -m) in
 x86_64) chown -v lfs $LFS/lib64 ;;
 esac
 
+chown -v -R lfs:lfs /home/lfs
+
 su - lfs
 
 cat >~/.bash_profile <<"EOF"
