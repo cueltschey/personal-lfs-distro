@@ -7,7 +7,7 @@ mkfs.ext4 /dev/sd1
 mkdir -pv /mnt/lfs
 mount -o loop /dev/sd1 /mnt/lfs
 
-cp ./curl.txt ./build_initial.sh ./build_secondary.sh /mnt/lfs/
+cp ./curl.txt ./build_initial.sh ./build_secondary.sh ./chroot.sh /mnt/lfs/
 
 cd /mnt/lfs/
 
