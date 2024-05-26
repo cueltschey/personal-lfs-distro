@@ -1,6 +1,9 @@
 #!/bin/bash
 
-## NOTE: This must me run as root
+if [ "$(whoami)" != "root" ]; then
+   echo "Script must be run as root" 
+   exit 1
+fi
 
 export LFS=/mnt/lfs
 
