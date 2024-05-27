@@ -26,6 +26,10 @@ else
 	mount -vt tmpfs -o nosuid,nodev tmpfs $LFS/dev/shm
 fi
 
+cp /usr/bin/env $LFS/usr/bin
+
+mount --bind /bin $LFS/bin
+
 ## Entering chroot
 
 chroot "$LFS" /usr/bin/env -i \
