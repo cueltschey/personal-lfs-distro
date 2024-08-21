@@ -1,0 +1,9 @@
+# UUID=d49a1076-f9a9-4e3f-a1e2-449c87668aff
+/dev/nvme0n1p3      	/         	ext4      	rw,relatime	0 1
+
+# UUID=2835-16D9
+/dev/nvme0n1p1      	/boot/efi 	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+
+# UUID=b8914cb9-8591-4a53-9ca7-77e174a1191f
+/dev/nvme0n1p2      	none      	swap      	defaults  	0 0
+
